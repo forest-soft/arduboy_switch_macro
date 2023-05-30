@@ -762,7 +762,7 @@ void command_xenoblade2_arduran_loop() {
 
   print_status(F("PASS"));
   for (int i = 0; i < 12; i++) {
-    macro_input(F("↑,A,A,7000"));
+    macro_input(F("↑,A,A,7500"));
   }
 
   print_status(F("RESULT"));
