@@ -52,7 +52,7 @@ void setup() {
 	command_list[COMMAND_YUGIOH_SURRENDER] = F("[YuGiOh]SURRENDER");
 	command_list[COMMAND_XENOBLADE2_BOND_BLADE] = F("[Xeno2]BOND BLADE");
 	command_list[COMMAND_XENOBLADE2_EPIC_COLLECT] = F("[Xeno2]EPIC COLLECT");
-	command_list[COMMAND_XENOBLADE2_ARDURAN_LOOP] = F("[Xeno2]ARDURAN LOOP");
+	command_list[COMMAND_XENOBLADE2_ARDURAN_LOOP] = F("[Spla3]NAWABATO");
 	command_list[COMMAND_SMASHBROS_SPECTATOR] = F("[SmaSP]SPECTATOR");
 	
 	// Switchにつなぐ前に何かキーを送信しないと認識されないことがあるので、キー入力しておく。
@@ -751,7 +751,25 @@ void command_xenoblade2_epic_collect() {
 
 
 // [ゼノブレイド2]アルドランループ
+// [Splatoon3]ナワバトラーランク上げ
+// デッキ選択画面でスタート
 void command_xenoblade2_arduran_loop() {
+  print_status(F("NAME"));
+	macro_input(F("A,A,A,A,A,A,A,A,A,A,A,A,4000"));
+  
+  print_status(F("DRAW"));
+  macro_input(F("A,4000"));
+
+  print_status(F("PASS"));
+  for (int i = 0; i < 12; i++) {
+    macro_input(F("↑,A,A,7000"));
+  }
+
+  print_status(F("RESULT"));
+  macro_input(F("3000,A,A,A,A,A,A,A,4000"));
+
+
+  /*
 	print_status(F("SKIP TRAVEL"));
 	macro_input(F("+,1000,→,A,500,↓,A,500,A,1500,↓,↓,A,A,11000"));
 
@@ -792,6 +810,7 @@ void command_xenoblade2_arduran_loop() {
 		// 長時間動かしていると動かなくなってたりするのでセーブしておく。
 		macro_input(F("-,2000,A,1000,A,↑,A,1000,+,3000"));
 	}
+  */
 }
 
 // [大乱闘スマッシュブラザーズSP]大観戦ポイント稼ぎマクロ
