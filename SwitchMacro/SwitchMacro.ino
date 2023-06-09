@@ -50,7 +50,7 @@ void setup() {
 	// メニューの選択肢作成
 	command_list[COMMAND_A_BUTTON_REPEAT] = F("A BUTTON REPEAT");
 	command_list[COMMAND_YUGIOH_SURRENDER] = F("[YuGiOh]SURRENDER");
-	command_list[COMMAND_XENOBLADE2_BOND_BLADE] = F("[Xeno2]BOND BLADE");
+	command_list[COMMAND_XENOBLADE2_BOND_BLADE] = F("[Zelda]ITEM DUPLICATE");
 	command_list[COMMAND_XENOBLADE2_EPIC_COLLECT] = F("[Xeno2]EPIC COLLECT");
 	command_list[COMMAND_XENOBLADE2_ARDURAN_LOOP] = F("[Spla3]NAWABATO");
 	command_list[COMMAND_SMASHBROS_SPECTATOR] = F("[SmaSP]SPECTATOR");
@@ -726,6 +726,23 @@ void command_yugioh_surrender() {
 
 // [ゼノブレイド2]コアクリスタル同調マクロ
 void command_xenoblade2_bond_blade() {
+  // ゼルダのミネルゴーレムアイテム増殖
+  // アイテムにカーソルを合わせて実行
+	print_status(F("ITEM DUPLICATE"));
+	macro_input(F("A,↓"), 100, 150);
+  macro_input(F("A,A,A,A,A"), 50, 150);
+  
+  SwitchControlLibrary().PressButtonY();
+  SwitchControlLibrary().PressButtonB();
+  macro_delay(100);
+  SwitchControlLibrary().ReleaseButtonY();
+  SwitchControlLibrary().ReleaseButtonB();
+  macro_delay(300);
+
+  macro_input(F("A,A,A,A,A"), 50, 150);
+  macro_input(F("+"), 100, 150);
+
+  /*
 	print_status(F("CRYSTAL SELECT"));
 	macro_input(F("A,250,A,250,A,250"));
 
@@ -737,6 +754,7 @@ void command_xenoblade2_bond_blade() {
 
 	print_status(F("COMPLETE!"));
 	macro_delay(500);
+  */
 }
 
 
@@ -755,18 +773,19 @@ void command_xenoblade2_epic_collect() {
 // デッキ選択画面でスタート
 void command_xenoblade2_arduran_loop() {
   print_status(F("NAME"));
-	macro_input(F("A,A,A,A,A,A,A,A,A,A,A,A,4000"));
+	macro_input(F("A,A,A,A,A,A,7000"));
   
   print_status(F("DRAW"));
   macro_input(F("A,4000"));
 
   print_status(F("PASS"));
   for (int i = 0; i < 12; i++) {
-    macro_input(F("↑,A,A,7500"));
+    // スペシャルを使われるとタイミングがずれるので、少し待ち時間を長めにとる。
+    macro_input(F("↑,A,A,8200"));
   }
 
   print_status(F("RESULT"));
-  macro_input(F("3000,A,A,A,A,A,A,A,4000"));
+  macro_input(F("5000,A,A,A,A,A,4000,A,1000,A,1000,A,1000,A"));
 
 
   /*
